@@ -12,11 +12,17 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": ["playwright","e2e"],
+  "keywords": [
+    "playwright",
+    "e2e"
+  ],
   "author": "Alessandro Stoppato",
   "license": "ISC",
   "dependencies": {
     "@alexrah/logger": "^5.1.0",
     "@playwright/test": "^1.44.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
   }
 }
