@@ -3,7 +3,7 @@
     "module": "NodeNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "target": "es5",
-    "sourceMap": true,
+    "sourceMap": false,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "jsx": "react",
