@@ -1,0 +1,16 @@
+{
+  "name": "@alexrah/playwright-utils",
+  "version": "1.0.0",
+  "description": "A set of utilities to ease writing Playwright e2e tests",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@alexrah/logger": "^5.1.0",
+    "@playwright/test": "^1.44.0"
+  }
+}
