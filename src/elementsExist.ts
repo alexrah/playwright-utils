@@ -2,23 +2,10 @@ import {expect, Page} from "@playwright/test";
 import logger from "@alexrah/logger";
 import type {tCommonSelectors, tSelector} from "./playwrightTypes";
 
-async function headerFooterExist(page:Page,lg:logger){
 
-    const commonTestIds:tCommonSelectors = {
-        header: 'header-link-logo',
-        footer: 'footer-partnership'
-    }
+async function contentExists(testUrlSelectors:tSelector[] , page:Page ){
 
-    lg.i('check if header exists');
-
-    await expect(page.getByTestId(commonTestIds.header)).toBeVisible();
-
-    lg.i('check if footer exists');
-    await expect(page.getByTestId(commonTestIds.footer)).toBeVisible();
-
-}
-
-async function contentExists(testUrlSelectors:tSelector[] , page:Page, lg:logger){
+    const lg = new logger('contentExists')
 
     for ( const contentSelector of testUrlSelectors ){
 
@@ -33,7 +20,9 @@ async function contentExists(testUrlSelectors:tSelector[] , page:Page, lg:logger
 
 }
 
-async function contentIsVisible(testUrlSelectors:tSelector[] , page:Page, lg:logger){
+async function contentIsVisible(testUrlSelectors:tSelector[] , page:Page ){
+
+    const lg = new logger('contentIsVisible');
 
     for ( const contentSelector of testUrlSelectors ){
 
@@ -46,7 +35,9 @@ async function contentIsVisible(testUrlSelectors:tSelector[] , page:Page, lg:log
 
 }
 
-async function contentNotExist(testUrlSelectors:tSelector[],page:Page,lg:logger){
+async function contentNotExist(testUrlSelectors:tSelector[],page:Page){
+
+    const lg = new logger('contentNotExist');
 
     for ( const contentSelector of testUrlSelectors ){
 
@@ -56,4 +47,4 @@ async function contentNotExist(testUrlSelectors:tSelector[],page:Page,lg:logger)
     }
 }
 
-export { headerFooterExist,contentIsVisible,contentNotExist }
+export { contentIsVisible,contentExists, contentNotExist }
