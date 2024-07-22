@@ -20,7 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "@alexrah/logger": "^5.1.0",
-    "@playwright/test": "^1.44.0"
+    "@playwright/test": "^1.45.3"
   },
   "devDependencies": {
     "typescript": "^5.4.5"
