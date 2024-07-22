@@ -36,6 +36,7 @@ await contentNotExist(testUrl.notExistentContentSelectors,page);
 ### wpSessionLoginStorage
 - login to a wordpress backend with creds provided in .env file USERNAME & PASSWORD
 - save authenticated session in *.json file to allow reuse in multiple tests
+- requires option `use.baseURL` to be set in `playwright.config.ts` to correctly open /wp-login.php
 ```typescript
 await wpSessionLoginStorage(browser,'/path/to/stored/creds.json')
 ```
