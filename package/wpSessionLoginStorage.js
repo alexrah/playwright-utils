@@ -71,10 +71,11 @@ var fs = __importStar(require("fs"));
  * @param browser the browser contect from the current test
  * @param absPathToStorageFile ie: `${__dirname}/../storage/storageState.json`
  * */
-var wpSessionLoginStorage = function (browser, absPathToStorageFile) { return __awaiter(void 0, void 0, void 0, function () {
+var wpSessionLoginStorage = function (_a) { return __awaiter(void 0, [_a], void 0, function (_b) {
     var lg, browserLogin, pageLogin;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var browser = _b.browser, absPathToStorageFile = _b.absPathToStorageFile, _c = _b.checkIfSuccessfull, checkIfSuccessfull = _c === void 0 ? false : _c;
+    return __generator(this, function (_d) {
+        switch (_d.label) {
             case 0:
                 lg = new logger_1.default('backendLoginStorage');
                 // const sStorageFilePath = `${__dirname}/../storage/storageState.json`
@@ -82,46 +83,49 @@ var wpSessionLoginStorage = function (browser, absPathToStorageFile) { return __
                 if (!fs.existsSync(absPathToStorageFile)) return [3 /*break*/, 2];
                 lg.i('storageState.json exists');
                 return [4 /*yield*/, browser.newContext({ storageState: absPathToStorageFile })];
-            case 1: return [2 /*return*/, _a.sent()];
+            case 1: return [2 /*return*/, _d.sent()];
             case 2:
                 lg.i('storageState.json not exists, creating');
                 return [4 /*yield*/, test_1.chromium.launch()];
             case 3:
-                browserLogin = _a.sent();
+                browserLogin = _d.sent();
                 return [4 /*yield*/, browserLogin.newPage()];
             case 4:
-                pageLogin = _a.sent();
+                pageLogin = _d.sent();
                 lg.i('emulate login via wp-login.php');
                 // @ts-ignore
                 return [4 /*yield*/, pageLogin.goto('/wp-login.php')];
             case 5:
                 // @ts-ignore
-                _a.sent();
+                _d.sent();
                 return [4 /*yield*/, pageLogin.fill('input#user_login', process.env.USERNAME)];
             case 6:
-                _a.sent();
+                _d.sent();
                 return [4 /*yield*/, pageLogin.fill('input#user_pass', process.env.PASSWORD)];
             case 7:
-                _a.sent();
+                _d.sent();
                 return [4 /*yield*/, pageLogin.getByRole('button', { name: /Accedi|Login/ }).click()];
             case 8:
-                _a.sent();
+                _d.sent();
+                if (!checkIfSuccessfull) return [3 /*break*/, 10];
                 lg.i('check if logging is successful');
                 return [4 /*yield*/, pageLogin.waitForSelector('#adminmenuwrap')];
             case 9:
-                _a.sent();
+                _d.sent();
+                _d.label = 10;
+            case 10:
                 lg.i('save login data to fixtures/storageState.json');
                 return [4 /*yield*/, pageLogin.context().storageState({ path: absPathToStorageFile })];
-            case 10:
-                _a.sent();
-                return [4 /*yield*/, pageLogin.close()];
             case 11:
-                _a.sent();
-                return [4 /*yield*/, browserLogin.close()];
+                _d.sent();
+                return [4 /*yield*/, pageLogin.close()];
             case 12:
-                _a.sent();
+                _d.sent();
+                return [4 /*yield*/, browserLogin.close()];
+            case 13:
+                _d.sent();
                 return [4 /*yield*/, browser.newContext({ storageState: absPathToStorageFile })];
-            case 13: return [2 /*return*/, _a.sent()];
+            case 14: return [2 /*return*/, _d.sent()];
         }
     });
 }); };
