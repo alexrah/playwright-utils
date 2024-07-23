@@ -3,11 +3,18 @@ import {Browser, chromium } from '@playwright/test';
 import logger from "@alexrah/logger";
 import * as fs from "fs";
 
+
+type tWpSessionLoginStorageProps = {
+    browser: Browser,
+    absPathToStorageFile: string,
+    checkIfSuccessfull?: boolean
+}
+
 /**
  * @param browser the browser contect from the current test
  * @param absPathToStorageFile ie: `${__dirname}/../storage/storageState.json`
  * */
-const wpSessionLoginStorage = async (browser:Browser,absPathToStorageFile:string) => {
+const wpSessionLoginStorage = async ({browser, absPathToStorageFile, checkIfSuccessfull = false}:tWpSessionLoginStorageProps) => {
 
     const lg = new logger('backendLoginStorage');
 
@@ -31,8 +38,10 @@ const wpSessionLoginStorage = async (browser:Browser,absPathToStorageFile:string
     await pageLogin.fill('input#user_pass', process.env.PASSWORD);
     await pageLogin.getByRole('button', { name: /Accedi|Login/ }).click()
 
-    lg.i('check if logging is successful');
-    await pageLogin.waitForSelector('#adminmenuwrap');
+    if(checkIfSuccessfull){
+        lg.i('check if logging is successful');
+        await pageLogin.waitForSelector('#adminmenuwrap');
+    }
 
     lg.i('save login data to fixtures/storageState.json');
     await pageLogin.context().storageState({ path: absPathToStorageFile });
