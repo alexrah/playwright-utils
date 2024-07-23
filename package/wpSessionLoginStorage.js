@@ -70,6 +70,7 @@ var fs = __importStar(require("fs"));
 /**
  * @param browser the browser contect from the current test
  * @param absPathToStorageFile ie: `${__dirname}/../storage/storageState.json`
+ * @param checkIfSuccessfull toggle check about redirect to wp-admin after log-in (if logging as community user, no access to wp-admin); default: false
  * */
 var wpSessionLoginStorage = function (_a) { return __awaiter(void 0, [_a], void 0, function (_b) {
     var lg, browserLogin, pageLogin;
