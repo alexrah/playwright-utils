@@ -1,6 +1,6 @@
 {
   "name": "@alexrah/playwright-utils",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "A set of utilities to ease writing Playwright e2e tests",
   "main": "package/index.js",
   "scripts": {
@@ -19,7 +19,8 @@
   "author": "Alessandro Stoppato",
   "license": "ISC",
   "dependencies": {
-    "@alexrah/logger": "^5.1.0"
+    "@alexrah/logger": "^5.1.0",
+    "dotenv": "^16.4.5"
   },
   "peerDependencies": {
     "@playwright/test": "^1.x"

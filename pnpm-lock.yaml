@@ -11,6 +11,9 @@ dependencies:
   '@playwright/test':
     specifier: ^1.45.3
     version: 1.45.3
+  dotenv:
+    specifier: ^16.4.5
+    version: 16.4.5
 
 devDependencies:
   typescript:
@@ -31,6 +34,11 @@ packages:
     hasBin: true
     dependencies:
       playwright: 1.45.3
+    dev: false
+
+  /dotenv@16.4.5:
+    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
+    engines: {node: '>=12'}
     dev: false
 
   /fsevents@2.3.2:
