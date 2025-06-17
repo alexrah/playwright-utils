@@ -1,6 +1,6 @@
 import {expect, Page} from "@playwright/test";
 import logger from "@alexrah/logger";
-import type {tCommonSelectors, tSelector} from "./playwrightTypes";
+import type {tCommonSelectors, tSelector} from "./playwrightTypes.js";
 
 
 async function contentExists(testUrlSelectors:tSelector[] , page:Page ){
