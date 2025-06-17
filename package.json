@@ -1,6 +1,6 @@
 {
   "name": "@alexrah/playwright-utils",
-  "version": "1.3.3",
+  "version": "2.0.0",
   "description": "A set of utilities to ease writing Playwright e2e tests",
   "type": "module",
   "scripts": {
@@ -24,6 +24,7 @@
     "@alexrah/logger": "^5.1.0",
     "copyfiles": "^2.4.1",
     "dotenv": "^16.4.5",
+    "eslint": "^9.29.0",
     "rimraf": "^6.0.1",
     "typescript": "^5.4.5"
   },
