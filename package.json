@@ -2,15 +2,16 @@
   "name": "@alexrah/playwright-utils",
   "version": "1.3.3",
   "description": "A set of utilities to ease writing Playwright e2e tests",
-  "main": "package/index.js",
+  "type": "module",
   "scripts": {
-    "package": "rm -fr package/* && tsc"
-  },
-  "files": [
-    "package"
-  ],
-  "publishConfig": {
-    "access": "public"
+    "package": "rm -fr package/* && tsc",
+    "build": "pnpm copyfiles && tsc",
+    "copyfiles": "copyfiles -u 1 \"src/**/*.d.ts\" dist/",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf -g {dist/**/*,*.tsbuildinfo}",
+    "prepublishOnly": "pnpm clean && pnpm build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [
     "playwright",
@@ -18,14 +19,41 @@
   ],
   "author": "Alessandro Stoppato",
   "license": "ISC",
-  "dependencies": {
+  "packageManager": "pnpm@10.7.1",
+  "devDependencies": {
     "@alexrah/logger": "^5.1.0",
-    "dotenv": "^16.4.5"
+    "copyfiles": "^2.4.1",
+    "dotenv": "^16.4.5",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.4.5"
   },
   "peerDependencies": {
-    "@playwright/test": "^1.x"
+    "@alexrah/logger": "^5.1.0",
+    "@playwright/test": "^1.x",
+    "dotenv": "^16.4.5"
   },
-  "devDependencies": {
-    "typescript": "^5.4.5"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexrah/playwright-utils.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "exports": {
+      ".": {
+        "import": "./dist/index.js",
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
   }
 }
