@@ -4,7 +4,6 @@
   "description": "A set of utilities to ease writing Playwright e2e tests",
   "type": "module",
   "scripts": {
-    "package": "rm -fr package/* && tsc",
     "build": "pnpm copyfiles && tsc",
     "copyfiles": "copyfiles -u 1 \"src/**/*.d.ts\" dist/",
     "typecheck": "tsc --noEmit",
