@@ -16,7 +16,6 @@ export const defaultESLintIgnores = [
 
 /** @type {Config[]} */
 export default [
-  ...payloadEsLintConfig,
   {
     ignores: [
       ...defaultESLintIgnores,
